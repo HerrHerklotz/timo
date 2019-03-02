@@ -1,7 +1,7 @@
 {
     "name": "Timo",
     "short_name": "Timo",
-    "start_url": ".",
+    "start_url": "https://herrherklotz.github.io/timo/index.html",
     "display": "standalone",
     "background_color": "#fff",
     "description": "A simply timekeeper app.",
