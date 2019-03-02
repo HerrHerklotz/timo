@@ -11,16 +11,21 @@ const gRuntimeCache = 'timo-runtime';
 
 // A list of strings containing the files we want to cache.
 const gFilesToCache = [
-    '/', // /index.html
-    '/assets/images/icon.png',
-    '/favicon.ico',
-    '/main.js',
-    '/manifest.json',
-    '/polyfills.js',
-    '/runtime.js',
-    '/styles.js',
-    '/sw.js',
-    '/vendor.js'
+    '.', // /index.html
+    'assets/images/icon_48.png',
+    'assets/images/icon_72.png',
+    'assets/images/icon_96.png',
+    'assets/images/icon_144.png',
+    'assets/images/icon_192.png',
+    'assets/images/icon_512.png',
+    'favicon.ico',
+    'main.js',
+    'manifest.json',
+    'polyfills.js',
+    'runtime.js',
+    'styles.js',
+    'sw.js',
+    'vendor.js'
 ];
 
 
