@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<div *ngFor=\"let eDay of this.mContent | keyvalue\" style=\"text-align:center\">\n  <p style=\"font-weight: bold; cursor: pointer;\" (click)=\"this.deleteDatabaseEntry(eDay.key)\">\n    {{eDay.key}}\n  </p>\n  <p *ngFor=\"let eTime of eDay.value\">\n    {{eTime}}\n  </p>\n  <br />\n</div>\n<button (click)=\"this.addDatabaseEntry()\">\n  Add\n</button>"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<header>\n  <label>Timo</label>\n</header>\n<main>\n  <div *ngFor=\"let eDay of this.mContent | keyvalue\" style=\"text-align:center\">\n    <p (click)=\"this.deleteDatabaseEntry(eDay.key)\">\n      {{eDay.key}}\n    </p>\n    <p *ngFor=\"let eTime of eDay.value\">\n      {{eTime}}\n    </p>\n    <br />\n  </div>\n</main>\n<button (click)=\"this.addDatabaseEntry()\">+</button>\n"
 
 /***/ }),
 
@@ -41,7 +41,7 @@ module.exports = "<!--The content below is only a placeholder and can be replace
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "button {\n  bottom: 24px;\n  position: absolute;\n  right: 24px;\n  border-radius: 50%;\n  width: 48px;\n  height: 48px;\n  cursor: pointer; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvQzpcXFVzZXJzXFxvbGl2ZVxcUHJvamVjdHNcXHRpbW8vc3JjXFxhcHBcXGFwcC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLFlBQVk7RUFDWixrQkFBa0I7RUFDbEIsV0FBVztFQUVYLGtCQUFrQjtFQUNsQixXQUFXO0VBQ1gsWUFBWTtFQUNaLGVBQWUsRUFBQSIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImJ1dHRvbiB7XHJcbiAgICBib3R0b206IDI0cHg7XHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICByaWdodDogMjRweDtcclxuXHJcbiAgICBib3JkZXItcmFkaXVzOiA1MCU7XHJcbiAgICB3aWR0aDogNDhweDtcclxuICAgIGhlaWdodDogNDhweDtcclxuICAgIGN1cnNvcjogcG9pbnRlcjtcclxufSJdfQ== */"
+module.exports = ":host {\n  height: 100vh;\n  display: flex;\n  flex-direction: column;\n  background-color: #fefefe; }\n  :host header {\n    align-items: center;\n    background-color: #a82d59;\n    box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);\n    display: flex;\n    flex-direction: row;\n    justify-content: flex-start;\n    padding: 12px;\n    z-index: 1; }\n  :host header > label {\n      color: #ffffff;\n      font-size: 24px;\n      font-weight: bold; }\n  :host main {\n    flex: 1;\n    overflow: auto; }\n  :host main > div p {\n      font-size: 18px;\n      margin: unset; }\n  :host main > div p:first-child {\n        padding: 12px;\n        cursor: pointer;\n        font-weight: bold;\n        background-color: aliceblue; }\n  :host main > div p:not(:first-child) {\n        padding-top: 4px; }\n  :host button {\n    background-color: #3e4041;\n    border: unset;\n    bottom: 24px;\n    position: fixed;\n    right: 24px;\n    border-radius: 50%;\n    width: 48px;\n    height: 48px;\n    color: #ffffff;\n    cursor: pointer;\n    font-size: 24px; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvQzpcXFVzZXJzXFxvbGl2ZVxcUHJvamVjdHNcXHRpbW8vc3JjXFxhcHBcXGFwcC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGFBQWE7RUFDYixhQUFhO0VBQ2Isc0JBQXNCO0VBQ3RCLHlCQUF5QixFQUFBO0VBSjdCO0lBT1EsbUJBQW1CO0lBQ25CLHlCQUF5QjtJQUN6QixpSEFBcUc7SUFDckcsYUFBYTtJQUNiLG1CQUFtQjtJQUNuQiwyQkFBMkI7SUFDM0IsYUFBYTtJQUNiLFVBQVUsRUFBQTtFQWRsQjtNQWtCWSxjQUFjO01BQ2QsZUFBZTtNQUNmLGlCQUFpQixFQUFBO0VBcEI3QjtJQTBCUSxPQUFPO0lBQ1AsY0FBYyxFQUFBO0VBM0J0QjtNQStCZ0IsZUFBZTtNQUNmLGFBQWEsRUFBQTtFQWhDN0I7UUFtQ29CLGFBQWE7UUFDYixlQUFlO1FBQ2YsaUJBQWlCO1FBQ2pCLDJCQUEyQixFQUFBO0VBdEMvQztRQTBDb0IsZ0JBQWdCLEVBQUE7RUExQ3BDO0lBa0RRLHlCQUF5QjtJQUN6QixhQUFhO0lBQ2IsWUFBWTtJQUNaLGVBQWU7SUFDZixXQUFXO0lBRVgsa0JBQWtCO0lBQ2xCLFdBQVc7SUFDWCxZQUFZO0lBQ1osY0FBYztJQUNkLGVBQWU7SUFFZixlQUFlLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9hcHAuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyI6aG9zdCB7XHJcbiAgICBoZWlnaHQ6IDEwMHZoO1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZmVmZWZlO1xyXG5cclxuICAgIGhlYWRlciB7XHJcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjYTgyZDU5O1xyXG4gICAgICAgIGJveC1zaGFkb3c6IDAgM3B4IDVweCAtMXB4IHJnYmEoMCwwLDAsLjIpLCAwIDZweCAxMHB4IDAgcmdiYSgwLDAsMCwuMTQpLCAwIDFweCAxOHB4IDAgcmdiYSgwLDAsMCwuMTIpO1xyXG4gICAgICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICAgICAgZmxleC1kaXJlY3Rpb246IHJvdztcclxuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGZsZXgtc3RhcnQ7XHJcbiAgICAgICAgcGFkZGluZzogMTJweDtcclxuICAgICAgICB6LWluZGV4OiAxO1xyXG4gICAgXHJcbiAgICBcclxuICAgICAgICAmID4gbGFiZWwge1xyXG4gICAgICAgICAgICBjb2xvcjogI2ZmZmZmZjtcclxuICAgICAgICAgICAgZm9udC1zaXplOiAyNHB4O1xyXG4gICAgICAgICAgICBmb250LXdlaWdodDogYm9sZDtcclxuICAgICAgICB9XHJcbiAgICB9XHJcblxyXG5cclxuICAgIG1haW4ge1xyXG4gICAgICAgIGZsZXg6IDE7XHJcbiAgICAgICAgb3ZlcmZsb3c6IGF1dG87XHJcblxyXG4gICAgICAgICYgPiBkaXYge1xyXG4gICAgICAgICAgICBwIHtcclxuICAgICAgICAgICAgICAgIGZvbnQtc2l6ZTogMThweDtcclxuICAgICAgICAgICAgICAgIG1hcmdpbjogdW5zZXQ7XHJcblxyXG4gICAgICAgICAgICAgICAgJjpmaXJzdC1jaGlsZCB7XHJcbiAgICAgICAgICAgICAgICAgICAgcGFkZGluZzogMTJweDtcclxuICAgICAgICAgICAgICAgICAgICBjdXJzb3I6IHBvaW50ZXI7XHJcbiAgICAgICAgICAgICAgICAgICAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbiAgICAgICAgICAgICAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogYWxpY2VibHVlO1xyXG4gICAgICAgICAgICAgICAgfVxyXG5cclxuICAgICAgICAgICAgICAgICY6bm90KDpmaXJzdC1jaGlsZCkge1xyXG4gICAgICAgICAgICAgICAgICAgIHBhZGRpbmctdG9wOiA0cHg7XHJcbiAgICAgICAgICAgICAgICB9XHJcbiAgICAgICAgICAgIH1cclxuICAgICAgICB9XHJcbiAgICB9XHJcbiAgICBcclxuXHJcbiAgICBidXR0b24ge1xyXG4gICAgICAgIGJhY2tncm91bmQtY29sb3I6ICMzZTQwNDE7XHJcbiAgICAgICAgYm9yZGVyOiB1bnNldDtcclxuICAgICAgICBib3R0b206IDI0cHg7XHJcbiAgICAgICAgcG9zaXRpb246IGZpeGVkO1xyXG4gICAgICAgIHJpZ2h0OiAyNHB4O1xyXG4gICAgXHJcbiAgICAgICAgYm9yZGVyLXJhZGl1czogNTAlO1xyXG4gICAgICAgIHdpZHRoOiA0OHB4O1xyXG4gICAgICAgIGhlaWdodDogNDhweDtcclxuICAgICAgICBjb2xvcjogI2ZmZmZmZjtcclxuICAgICAgICBjdXJzb3I6IHBvaW50ZXI7XHJcbiAgICAgICAgXHJcbiAgICAgICAgZm9udC1zaXplOiAyNHB4O1xyXG4gICAgfVxyXG59XHJcblxyXG4iXX0= */"
 
 /***/ }),
 
@@ -61,7 +61,6 @@ __webpack_require__.r(__webpack_exports__);
 
 var AppComponent = /** @class */ (function () {
     function AppComponent() {
-        this.title = 'timo';
     }
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -118,7 +117,7 @@ var AppComponent = /** @class */ (function () {
         var day = pad(timestamp.getDate()) + "." + pad(timestamp.getMonth() + 1);
         var time = pad(timestamp.getHours()) + ":" + pad(timestamp.getMinutes());
         if (this.mContent[day]) {
-            this.mContent[day].push(time);
+            this.mContent[day].unshift(time);
         }
         else {
             this.mContent[day] = [time];

@@ -1,13 +1,16 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div *ngFor="let eDay of this.mContent | keyvalue" style="text-align:center">
-  <p style="font-weight: bold; cursor: pointer;" (click)="this.deleteDatabaseEntry(eDay.key)">
-    {{eDay.key}}
-  </p>
-  <p *ngFor="let eTime of eDay.value">
-    {{eTime}}
-  </p>
-  <br />
-</div>
-<button (click)="this.addDatabaseEntry()">
-  Add
-</button>
+<header>
+  <label>Timo</label>
+</header>
+<main>
+  <div *ngFor="let eDay of this.mContent | keyvalue" style="text-align:center">
+    <p (click)="this.deleteDatabaseEntry(eDay.key)">
+      {{eDay.key}}
+    </p>
+    <p *ngFor="let eTime of eDay.value">
+      {{eTime}}
+    </p>
+    <br />
+  </div>
+</main>
+<button (click)="this.addDatabaseEntry()">+</button>

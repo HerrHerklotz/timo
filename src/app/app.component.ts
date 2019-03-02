@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { defineBase } from '@angular/core/src/render3';
+
 
 @Component({
   selector: 'app-root',
@@ -7,7 +7,6 @@ import { defineBase } from '@angular/core/src/render3';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'timo';
   public mContent: {};
   private mDatabase: IDBDatabase;
 
@@ -83,7 +82,7 @@ export class AppComponent implements OnInit {
     const time = `${pad(timestamp.getHours())}:${pad(timestamp.getMinutes())}`;
 
     if (this.mContent[day]) {
-      this.mContent[day].push(time);
+      this.mContent[day].unshift(time);
     } else {
       this.mContent[day] = [time];
     }
