@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<div style=\"text-align:center\">\n  <h1>\n    Welcome to {{ title }}!\n  </h1>\n  <img width=\"300\" alt=\"Angular Logo\" src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==\">\n</div>\n<h2>Here are some links to help you start: </h2>\n<ul>\n  <li>\n    <h2><a target=\"_blank\" rel=\"noopener\" href=\"https://angular.io/tutorial\">Tour of Heroes</a></h2>\n  </li>\n  <li>\n    <h2><a target=\"_blank\" rel=\"noopener\" href=\"https://angular.io/cli\">CLI Documentation</a></h2>\n  </li>\n  <li>\n    <h2><a target=\"_blank\" rel=\"noopener\" href=\"https://blog.angular.io/\">Angular blog</a></h2>\n  </li>\n</ul>\n\n"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<div *ngFor=\"let eDay of this.mContent | keyvalue\" style=\"text-align:center\">\n  <p style=\"font-weight: bold; cursor: pointer;\" (click)=\"this.deleteDatabaseEntry(eDay.key)\">\n    {{eDay.key}}\n  </p>\n  <p *ngFor=\"let eTime of eDay.value\">\n    {{eTime}}\n  </p>\n  <br />\n</div>\n<button (click)=\"this.addDatabaseEntry()\">\n  Add\n</button>"
 
 /***/ }),
 
@@ -41,7 +41,7 @@ module.exports = "<!--The content below is only a placeholder and can be replace
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyJ9 */"
+module.exports = "button {\n  bottom: 24px;\n  position: absolute;\n  right: 24px;\n  border-radius: 50%;\n  width: 48px;\n  height: 48px;\n  cursor: pointer; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvQzpcXFVzZXJzXFxvbGl2ZVxcUHJvamVjdHNcXHRpbW8vc3JjXFxhcHBcXGFwcC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLFlBQVk7RUFDWixrQkFBa0I7RUFDbEIsV0FBVztFQUVYLGtCQUFrQjtFQUNsQixXQUFXO0VBQ1gsWUFBWTtFQUNaLGVBQWUsRUFBQSIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImJ1dHRvbiB7XHJcbiAgICBib3R0b206IDI0cHg7XHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICByaWdodDogMjRweDtcclxuXHJcbiAgICBib3JkZXItcmFkaXVzOiA1MCU7XHJcbiAgICB3aWR0aDogNDhweDtcclxuICAgIGhlaWdodDogNDhweDtcclxuICAgIGN1cnNvcjogcG9pbnRlcjtcclxufSJdfQ== */"
 
 /***/ }),
 
@@ -63,6 +63,90 @@ var AppComponent = /** @class */ (function () {
     function AppComponent() {
         this.title = 'timo';
     }
+    AppComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        if (!window.indexedDB) {
+            window.alert("Your browser doesn't support a stable version of IndexedDB. Such and such feature will not be available.");
+        }
+        var request = window.indexedDB.open("TimoDatabase", 1);
+        /*request.onerror = (pEvent: Event) => {
+          alert(`IndexedDB Error: ${request.errorCode}`);
+        };*/
+        request.onsuccess = function (pEvent) {
+            _this.mDatabase = pEvent.target.result; //pEvent.target.result;
+            _this.readDatabase();
+        };
+        // This event is only implemented in recent browsers   
+        request.onupgradeneeded = function (pEvent) {
+            // Save the IDBDatabase interface 
+            var lDatabase = pEvent.target.result;
+            if (lDatabase.objectStoreNames.contains("days")) {
+                lDatabase.deleteObjectStore("days");
+            }
+            // Create an objectStore for this database
+            lDatabase.createObjectStore("days");
+        };
+    };
+    AppComponent.prototype.readDatabase = function () {
+        var _this = this;
+        var lTransaction = this.mDatabase.transaction(['days'], 'readonly');
+        var keyRange = IDBKeyRange.lowerBound(0);
+        var lCursorRequest = lTransaction.objectStore('days').openCursor(keyRange);
+        this.mContent = {};
+        lTransaction.oncomplete = function (pEvent) {
+            console.info("read completed");
+        };
+        lCursorRequest.onsuccess = function (pEvent) {
+            var lResult = pEvent.target.result;
+            if (!!lResult == false) {
+                return;
+            }
+            _this.mContent[lResult.key] = lResult.value;
+            lResult.continue();
+        };
+    };
+    AppComponent.prototype.addDatabaseEntry = function () {
+        var _this = this;
+        function pad(pNumber) {
+            return ((pNumber < 10) ? "0" + pNumber : "" + pNumber);
+        }
+        var transaction = this.mDatabase.transaction(['days'], 'readwrite');
+        // Get the datastore.
+        var objStore = transaction.objectStore('days');
+        // Create a timestamp.
+        var timestamp = new Date();
+        var day = pad(timestamp.getDate()) + "." + pad(timestamp.getMonth() + 1);
+        var time = pad(timestamp.getHours()) + ":" + pad(timestamp.getMinutes());
+        if (this.mContent[day]) {
+            this.mContent[day].push(time);
+        }
+        else {
+            this.mContent[day] = [time];
+        }
+        // Create the datastore request.
+        var request = objStore.put(this.mContent[day], day);
+        // Handle a successful datastore put.
+        request.onsuccess = function (e) {
+            console.info("write completed");
+            _this.readDatabase();
+        };
+        request.onerror = function (pEvent) {
+            console.error("Error during write", pEvent);
+        };
+    };
+    AppComponent.prototype.deleteDatabaseEntry = function (pKey) {
+        var _this = this;
+        var transaction = this.mDatabase.transaction(['days'], 'readwrite');
+        var objStore = transaction.objectStore('days');
+        var request = objStore.delete(pKey);
+        request.onsuccess = function (pEvent) {
+            console.info("delete completed");
+            _this.readDatabase();
+        };
+        request.onerror = function (pEvent) {
+            console.error("Error during delete", pEvent);
+        };
+    };
     AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-root',
